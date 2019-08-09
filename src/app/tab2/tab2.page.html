@@ -17,21 +17,5 @@
         [chartType]="barChartType"
         (chartHover)="chartHovered($event)"
         (chartClick)="chartClicked($event)"></canvas>
-  </div>    
-  <br><br>
-  Happy Messages by Sentiment Range (Donut Chart)<br>
-  <div style="display: block">
-    <canvas baseChart
-        [data]="doughnutChartData"
-        [labels]="doughnutChartLabels"
-        [chartType]="doughnutChartType"></canvas>
-  </div>
-  <br><br>
-  Happy Messages by Sentiment Range (Pie Chart)<br>
-  <div style="display: block">
-    <canvas baseChart
-        [data]="pieChartData"
-        [labels]="pieChartLabels"
-        [chartType]="pieChartType"></canvas>
   </div>
 </ion-content>

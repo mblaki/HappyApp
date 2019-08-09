@@ -10,6 +10,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 })
 export class Tab2Page {
   messages: Message[];
+  message: Message;
   underpoint2;
   underpoint4;
   underpoint6;
@@ -37,29 +38,36 @@ export class Tab2Page {
       })
       this.messages.sort((message1, message2) => ((message1.dateCreated < message2.dateCreated) ? 1 : -1)); // order messages (optional)
     });
-
-    console.log(this.messages);
+    debugger
+    this.populateBarChart();
   }
 
   countMessages(lower, higher) {
     var count = 0;
-    for (var message in this.messages) {
-      if (message < higher && message >= lower) {
+    for (var i = 0; i < this.messages.length; i++) {
+      if (this.messages[i].score < higher && this.messages[i].score >= lower) {
         count++;
       }
     }
+    console.log(count);
     return count;
   }
 
   populateBarChart() {
-    this.underpoint2 = this.countMessages(0, 0.2);
+    this.underpoint2 = this.countMessages(-100000, 0.2);
     this.underpoint4 = this.countMessages(0.2, 0.4);
     this.underpoint6 = this.countMessages(0.4, 0.6);
     this.underpoint8 = this.countMessages(0.6, 0.8);
     this.under1 = this.countMessages(0.8, 1);
     this.under5 = this.countMessages(1, 5);
     this.over5 = this.countMessages(5, 10000000);
-  
+
+    this.barChartData = [
+      {
+        data: [this.underpoint2, this.underpoint4, this.underpoint6, this.underpoint8, this.under1, this.under5, this.over5],
+        label: "Number of Messages"
+      }
+    ]
   }
 
   private barChartOptions: any = {
@@ -71,7 +79,9 @@ export class Tab2Page {
   private barChartLegend: boolean = true;
 
   private barChartData: any[] = [
-    { data: [this.underpoint2, this.underpoint4, this.underpoint6, this.underpoint8, this.under1, this.under5, this.over5]}
+    { data: [this.underpoint2, this.underpoint4, this.underpoint6, this.underpoint8, this.under1, this.under5, this.over5],
+      label: "Number of Messages"
+    }
   ];
 
   // events
@@ -82,13 +92,4 @@ export class Tab2Page {
   private chartHovered(e: any): void {
       console.log(e);
   }
-
-  public doughnutChartLabels = ['Sales Q1', 'Sales Q2', 'Sales Q3', 'Sales Q4'];
-  public doughnutChartData = [120, 150, 180, 90];
-  public doughnutChartType = 'doughnut';
-
-  public pieChartLabels = ['Sales Q1', 'Sales Q2', 'Sales Q3', 'Sales Q4'];
-  public pieChartData = [120, 150, 180, 90];
-  public pieChartType = 'pie';
-
 }
