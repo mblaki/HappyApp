@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { MessageService } from '../services/message.service';
 import { Message } from '../models/message';
 import { AngularFirestore } from '@angular/fire/firestore';
-import sentiment from 'sentiment';
 
-//let sentiment = require('sentiment');
+import Sentiment from 'sentiment';
+
 
 @Component({
   selector: 'app-tab1',
@@ -19,7 +19,7 @@ import sentiment from 'sentiment';
 export class Tab1Page {
   messages: Message[];
   message: Message;
-
+  
   public message_string: string;
   public score: number;
   public date: string;
@@ -28,6 +28,7 @@ export class Tab1Page {
     messageService = new MessageService(firestore);
     this.message = new Message();
     this.messages = [];
+
    }
 
    ionViewWillEnter() {
@@ -36,7 +37,8 @@ export class Tab1Page {
 
 
   createMessage() {
-    this.message.score= sentiment.analyse(this.message_string);
+    var sentiment = new Sentiment();
+    this.message.score= sentiment.analyze(this.message_string);
 
     let today = new Date();
     let dd = String(today.getDate()).padStart(2, '0');
