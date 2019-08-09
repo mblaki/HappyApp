@@ -1,9 +1,37 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Two
+      Charts
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content text-center>
+  Happy Messages by Sentiment Range (Bar Chart)<br>
+  <div style="display: block">
+    <canvas baseChart
+        [datasets]="barChartData"
+        [labels]="barChartLabels"
+        [options]="barChartOptions"
+        [legend]="barChartLegend"
+        [chartType]="barChartType"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)"></canvas>
+  </div>    
+  <br><br>
+  Happy Messages by Sentiment Range (Donut Chart)<br>
+  <div style="display: block">
+    <canvas baseChart
+        [data]="doughnutChartData"
+        [labels]="doughnutChartLabels"
+        [chartType]="doughnutChartType"></canvas>
+  </div>
+  <br><br>
+  Happy Messages by Sentiment Range (Pie Chart)<br>
+  <div style="display: block">
+    <canvas baseChart
+        [data]="pieChartData"
+        [labels]="pieChartLabels"
+        [chartType]="pieChartType"></canvas>
+  </div>
+</ion-content>
