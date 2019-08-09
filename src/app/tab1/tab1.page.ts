@@ -38,8 +38,9 @@ export class Tab1Page {
 
   createMessage() {
     var sentiment = new Sentiment();
-    this.message.score= sentiment.analyze(this.message_string);
+    this.message.score= sentiment.analyze(this.message_string).score;
 
+    console.log("debg: " + this.message.score);
     let today = new Date();
     let dd = String(today.getDate()).padStart(2, '0');
     let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
