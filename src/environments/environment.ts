@@ -5,13 +5,13 @@
 export const environment = {
   production: false,
   firebaseConfig : {
-    apiKey: "AIzaSyA3PJI911H3_znF1TJOfI0ddqwW5SQHBhE",
-    authDomain: "happyapp-325f7.firebaseapp.com",
-    databaseURL: "https://happyapp-325f7.firebaseio.com",
-    projectId: "happyapp-325f7",
+    apiKey: "AIzaSyDkQoMUriXf4GLUDvgu-MyZtjsxVbyTlnc",
+    authDomain: "happy-cba8d.firebaseapp.com",
+    databaseURL: "https://happy-cba8d.firebaseio.com",
+    projectId: "happy-cba8d",
     storageBucket: "",
-    messagingSenderId: "660749562455",
-    appId: "1:660749562455:web:23c3825a29ceed43"
+    messagingSenderId: "1019183191013",
+    appId: "1:1019183191013:web:df3fc166f30a8f7c"
   }
 };
 
