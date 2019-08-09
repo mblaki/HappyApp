@@ -38,7 +38,6 @@ export class Tab2Page {
       })
       this.messages.sort((message1, message2) => ((message1.dateCreated < message2.dateCreated) ? 1 : -1)); // order messages (optional)
     });
-    debugger
     this.populateBarChart();
   }
 
