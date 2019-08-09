@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { AngularFireModule } from '@angular/fire';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { ChartsModule } from 'ng2-charts';
 
@@ -18,6 +19,7 @@ import { ChartsModule } from 'ng2-charts';
   entryComponents: [],
   imports: [BrowserModule, AngularFireModule.initializeApp(environment.firebaseConfig), IonicModule.forRoot(), AppRoutingModule, ChartsModule],
   providers: [
+    AngularFirestore,
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
