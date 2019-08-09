@@ -24,6 +24,7 @@ export class MessageService {
   deleteMessage(message: Message): void {
     this.firestore.doc('messages/' + message.id).delete();
   }
+ls
 
 
 }
